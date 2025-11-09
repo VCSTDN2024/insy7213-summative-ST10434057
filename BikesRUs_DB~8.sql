@@ -1,0 +1,13 @@
+SELECT 
+    b.BIKE_ID,
+    b.BIKE_TYPE,
+    b.MANUFACTURER,
+    d.VALUE AS BIKE_VALUE,
+    CASE 
+        WHEN d.VALUE > 3000 THEN '***'
+        WHEN d.VALUE > 1500 THEN '**'
+        ELSE '*'
+    END AS STATUS
+FROM BIKES b
+JOIN DONATIONS d ON b.BIKE_ID = d.BIKE_ID
+ORDER BY d.VALUE;
